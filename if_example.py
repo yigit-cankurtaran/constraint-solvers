@@ -5,7 +5,7 @@ x = Int("x")
 y = Int("y")
 max = If(x > y, x, y)
 
-print(max)
+print(f"max is {max}")
 
-simplify(max)  # simplify changed nothing here, nothing simpler than this
-print(max)
+max_simplified = simplify(max)
+print(f"max simplified is {max_simplified}")
