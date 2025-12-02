@@ -10,4 +10,7 @@ profit_simplified = simplify(profit)
 print(f"profit simplified is {profit_simplified}")
 
 s = Solver()
-s.add(income + loss == 20000)
+s.add(income == 10, loss == 7)
+s.add(profit != 3)  # trying to contradict expected val
+
+print(s.check())  # returns unsat
