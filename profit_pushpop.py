@@ -19,8 +19,10 @@ s.pop()
 s.push()
 s.add(profit >= 3)
 print(s.check())  # returns sat as well
-print(s.model().evaluate(profit))
+print(s.model().evaluate(profit))  # prints 3
 s.pop()
 # push and pop works! constraint context is basically a stack machine
 # check always checks the whole stack, we can use push and pop to look at individual constraints
 # tbh i have no idea why we would want to do that but knowing it's a stack is helpful
+
+# model evaluate = given all constraints and assignments, return value of expression
