@@ -3,7 +3,7 @@ from z3 import Int, If, simplify, Solver
 income = Int("income")
 loss = Int("loss")
 
-profit = If(income - loss > 0, income - loss, loss - income)
+profit = If(income - loss > 0, income - loss, -(loss - income))
 print(f"profit is {profit}")
 
 profit_simplified = simplify(profit)
@@ -21,3 +21,11 @@ print(s.check())  # returns unsat as well
 # we are adding another constraint on top of a wrong constraint.
 # the first constraint will always be wrong, therefore both of our results
 # will return "unsat"
+
+a = Solver()  # new solver
+a.add(income == 7, loss == 10)
+a.add(profit < 0)
+print(a.check())  # prints "sat"
+print(a.model().evaluate(profit))  # prints "-3"
+# this is how we get individual vars
+# profit is symbolic, we need to ask the solver what it became
